@@ -1,4 +1,4 @@
-set nocompatible              " be iMproved, required
+
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -68,15 +68,13 @@ set shiftwidth=2 " 统一缩进为2
 
 set hlsearch
 
-set whichwrap="b,s,h,l,k,j" " 光标到行首和行尾时可以继续移动
-
 set incsearch " 搜索逐字符高亮
 
 set ignorecase " 忽略大小写
 
 set gdefault " 行内替换
 
-set wildmenu " vim 自身命令行模式智能不全
+set wildmenu " vim 自身命令行模式智能补全
 
 set matchtime=5 " 对应括号高亮的时间
 
@@ -92,19 +90,26 @@ set selection=exclusive
 
 set selectmode=mouse,key
 
-"插入模式下移动
+" 光标到行首和行尾时可以继续移动
+set whichwrap="h,l"
+
+" 插入模式下移动
 " imap <c-j> <down>
 " imap <c-k> <up>
 " imap <c-l> <right>
 " imap <c-h> <left>
 
-"全选
+" 移动文本
+nmap <c-j> ddp
+nmap <c-k> dd<up><up>p
+
+" 全选
 map <c-a> <esc>ggVG$
 
-"不要进入vim的Ex模式，太2333了
+" 不要进入vim的Ex模式，太2333了
 nnoremap Q <nop>
 
-"for ycm
+" for ycm
 let mapleader=";"
 
 " 让配置变更立即生效
