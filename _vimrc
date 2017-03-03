@@ -42,7 +42,7 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
 " nerdtree config
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-cmap nt :NERDTreeToggle<CR>
+cmap ntr :NERDTreeToggle<CR>
 " 关闭vim时，如果打开的文件除了NERDTree没有其他文件时，它自动关闭，减少多次按:q!
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 
@@ -103,6 +103,12 @@ set whichwrap="h,l"
 nmap <c-j> ddp
 nmap <c-k> dd<up><up>p
 
+" 管理端html 一键配置
+imap `d <esc>2dhi<div class=""<esc>i
+imap `a <esc>2dhi<a href="#"><esc>F"la
+imap `i <esc>2dhi<input type="text" data-ng-model="" placeholder=""/><esc>2F=la
+imap `b <esc>2dhi<button title="" placeholder=""><esc>f=la
+
 " 全选
 map <c-a> <esc>ggVG$
 
@@ -117,12 +123,17 @@ let mapleader=";"
 
 " Normally we use vim-extensions. If you want true vi-compatibility
 " remove change the following statements
-set nocompatible	" Use Vim defaults instead of 100% vi compatibility
-set backspace=2		" more powerful backspacing
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+""set nocompatible	" Use Vim defaults instead of 100% vi compatibility
+""set backspace=2		" more powerful backspacing
+""autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+""autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 " Don't write backup file if vim is being called by "crontab -e"
-au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
+""au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
 " Don't write backup file if vim is being called by "chpass"
-au BufWrite /private/etc/pw.* set nowritebackup nobackup
+""au BufWrite /private/etc/pw.* set nowritebackup nobackup
+
+syntax enable
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
