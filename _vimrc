@@ -29,29 +29,36 @@ call vundle#begin()
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'Xuyuanp/nerdtree-git-plugin'
 
-	" NERD出品的快速给代码加注释插件，选中，`ctrl+h`即可注释多种语言代码
-	Plugin 'The-NERD-Commenter'
+	" 注释插件
+	Plugin 'scrooloose/nerdcommenter'
+
+  " gtag
+  Plugin 'gtags.vim'
+
+  " taglist 依赖于ctag
+  Plugin 'taglist.vim'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
 	filetype plugin indent on    " required
 
 " filenames like *.xml, *.html, *.xhtml, ...
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.vue"
 
 " nerdtree config
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-cmap ntr :NERDTreeToggle<CR>
+map ;2 :NERDTreeToggle<CR>
 " 关闭vim时，如果打开的文件除了NERDTree没有其他文件时，它自动关闭，减少多次按:q!
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 
 set modelines=0		" CVE-2007-2438
 set showmatch " 高亮显示对应的括号
+set matchtime=5 " 对应括号高亮的时间
 set number " 显示行号
 set relativenumber " 显示行号
 set cindent  " C风格的对齐方式
-set autoindent " 自动对齐
+" set autoindent " 新增行跟前一行使用相同的缩进格式
 set confirm " 在处理未保存或只读文件的时候，弹出确认
 set expandtab " 输入tab自动转成space 对应的space数量由tabstop=x 决定
 set tabstop=2 " 设置tab键宽
@@ -62,33 +69,41 @@ set cursorline " 行高亮
 
 set cursorcolumn " 列高亮
 
-set softtabstop=2
+" set softtabstop=4 " shifiwidth和tabstop混合，设置时，tab以该值为准
 
-set shiftwidth=2 " 统一缩进为2
+set shiftwidth=2 " 统一缩进为2  影响缩进空格数 
 
-set hlsearch
+set hlsearch " 搜索逐字符高亮
 
-set incsearch " 搜索逐字符高亮
+set incsearch " 增量搜索，边搜边查询 
 
 set ignorecase " 忽略大小写
 
-set gdefault " 行内替换
+" 自动识别文件格式
+set fileformats=unix,dos,mac
 
-set wildmenu " vim 自身命令行模式智能补全
+" 自动识别编码 注意：编码之间不要留空格。 cp936对应于gbk编码。 ucs-bom对应于windows下的文件格式
+setglobal fileencodings=ucs-bom,utf-8,cp936,
 
-set matchtime=5 " 对应括号高亮的时间
+" set gdefault " 行内替换
+
+" set wildmenu " vim 自身命令行模式智能补全
 
 set autowrite " 切换buffer时自动保存当前文件
 
+" 显示首尾空格
+" set list
+" set listchars=tab:>-,trail:-
+
+" 鼠标设置
 set completeopt=preview,menu
-
 set clipboard+=unnamed
-
 set mouse=a
-
 set selection=exclusive
-
 set selectmode=mouse,key
+
+" 设置折叠
+set foldmethod=marker " indent marker 常用
 
 " 光标到行首和行尾时可以继续移动
 set whichwrap="h,l"
@@ -135,5 +150,19 @@ let mapleader=";"
 
 syntax enable
 let g:solarized_termcolors=256
-set background=light
+set background=dark
 colorscheme solarized
+
+" scrooloose/nerdcommenter配置
+" 添加您自己的自定义格式
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" 对齐逐行注释分隔符左对齐而不是下面的代码缩进
+let g:NERDDefaultAlign = 'left'
+" 默认情况下在注释分隔符后添加空格
+let g:NERDSpaceDelims = 1
+" 使用紧凑语法进行预处理的多行注释
+let g:NERDCompactSexyComs = 1
+" 允许注释和反转空行（在注释区域时非常有用）
+let g:NERDCommentEmptyLines = 1
+" 取消注释时去除末尾空格
+let g:NERDTrimTrailingWhitespace = 1
