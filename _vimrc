@@ -15,6 +15,15 @@ call vundle#begin()
 
 	" 显示行末的空格；
 	Plugin 'ShowTrailingWhitespace'
+  
+  " html标签跳转
+  Plugin 'vim-scripts/matchit.zip'
+
+  " 快速移动"
+  Plugin 'easymotion/vim-easymotion'
+
+  " 模版定义工具 自定义html模版
+  Plugin 'SirVer/ultisnips'
 
 	" 在输入()，""等需要配对的符号时，自动帮你补全剩余半个
 	Plugin 'AutoClose'
@@ -33,10 +42,19 @@ call vundle#begin()
 	Plugin 'scrooloose/nerdcommenter'
 
   " gtag
-  Plugin 'gtags.vim'
+  " Plugin 'gtags.vim'
 
   " taglist 依赖于ctag
-  Plugin 'taglist.vim'
+  " Plugin 'taglist.vim'
+
+  " vim angular 定位函数
+  " Plugin 'vim-angular'
+
+  " vimwiki
+  Plugin 'vimwiki/vimwiki'
+
+  " ascll 图
+  Plugin 'vim-scripts/DrawIt'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
@@ -63,13 +81,15 @@ set confirm " 在处理未保存或只读文件的时候，弹出确认
 set expandtab " 输入tab自动转成space 对应的space数量由tabstop=x 决定
 set tabstop=2 " 设置tab键宽
 syntax on " 自动语法高亮
+set nocompatible
+filetype plugin on
 
 set cursorline " 行高亮
 " hi CursorLine   cterm=NONE ctermbg=white ctermfg=white guibg=white guifg=white
 
 set cursorcolumn " 列高亮
 
-" set softtabstop=4 " shifiwidth和tabstop混合，设置时，tab以该值为准
+set softtabstop=2 " shifiwidth和tabstop混合，设置时，tab以该值为准
 
 set shiftwidth=2 " 统一缩进为2  影响缩进空格数 
 
@@ -127,7 +147,7 @@ imap `b <esc>2dhi<button title="" placeholder=""><esc>f=la
 " 全选
 map <c-a> <esc>ggVG$
 
-" 不要进入vim的Ex模式，太2333了
+" 不要进入vim的Ex模式
 nnoremap Q <nop>
 
 " for ycm
@@ -150,7 +170,8 @@ let mapleader=";"
 
 syntax enable
 let g:solarized_termcolors=256
-set background=dark
+let g:solarized_visibility="normal"
+set background=dark  
 colorscheme solarized
 
 " scrooloose/nerdcommenter配置
@@ -161,8 +182,33 @@ let g:NERDDefaultAlign = 'left'
 " 默认情况下在注释分隔符后添加空格
 let g:NERDSpaceDelims = 1
 " 使用紧凑语法进行预处理的多行注释
-let g:NERDCompactSexyComs = 1
+" let g:NERDCompactSexyComs = 1
 " 允许注释和反转空行（在注释区域时非常有用）
 let g:NERDCommentEmptyLines = 1
 " 取消注释时去除末尾空格
 let g:NERDTrimTrailingWhitespace = 1
+
+" vimwiki
+let g:vimwiki_use_mouse = 1
+let g:vimwiki_list = [{'path': '/Users/lihaibo/vimwiki',
+\ 'path_html': 'Users/lihaibo/vimwiki/html/',
+\ 'html_header': 'Users/lihaibo/vimwiki/template/header.tpl',}]
+
+" 解决YCM和ultisnips的冲突
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" easymotion 配置
+let g:EasyMotion_do_mapping = 0 " Disable default mapping
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+let g:EasyMotion_use_smartsign_us = 1 " US layout With this option set, v will match both v and V, but V will match V only. Default: 0.
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
