@@ -56,6 +56,9 @@ call vundle#begin()
   " ascll 图
   Plugin 'vim-scripts/DrawIt'
 
+  " 异步任务
+  Plugin 'skywind3000/asyncrun.vim'
+
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
 	filetype plugin indent on    " required
@@ -128,6 +131,10 @@ set foldmethod=marker " indent marker 常用
 " 光标到行首和行尾时可以继续移动
 set whichwrap="h,l"
 
+" 缓冲区通配符配置
+set wildmenu wildmode=full 
+set wildchar=<Tab> wildcharm=<C-Z>
+
 " 插入模式下移动
 " imap <c-j> <down>
 " imap <c-k> <up>
@@ -135,8 +142,8 @@ set whichwrap="h,l"
 " imap <c-h> <left>
 
 " 移动文本
-nmap <c-j> ddp
-nmap <c-k> dd<up><up>p
+" nmap <c-j> ddp
+" nmap <c-k> dd<up><up>p
 
 " 管理端html 一键配置
 imap `d <esc>2dhi<div class=""<esc>i
@@ -145,7 +152,7 @@ imap `i <esc>2dhi<input type="text" data-ng-model="" placeholder=""/><esc>2F=la
 imap `b <esc>2dhi<button title="" placeholder=""><esc>f=la
 
 " 全选
-map <c-a> <esc>ggVG$
+" map <c-a> <esc>ggVG$
 
 " 不要进入vim的Ex模式
 nnoremap Q <nop>
