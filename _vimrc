@@ -4,64 +4,64 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-	" alternatively, pass a path where Vundle should install plugins
-	"call vundle#begin('~/some/path/here')
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-	" let Vundle manage Vundle, required
-	Plugin 'VundleVim/Vundle.vim'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-	" vue 高亮
-	Plugin 'posva/vim-vue'
+" vue 高亮
+Plugin 'posva/vim-vue'
 
-	" 显示行末的空格；
-	Plugin 'ShowTrailingWhitespace'
-  
-  " html标签跳转
-  Plugin 'vim-scripts/matchit.zip'
+" 显示行末的空格；
+"	Plugin 'ShowTrailingWhitespace'
 
-  " 快速移动"
-  Plugin 'easymotion/vim-easymotion'
+" html标签跳转
+Plugin 'vim-scripts/matchit.zip'
 
-  " 模版定义工具 自定义html模版
-  Plugin 'SirVer/ultisnips'
+" 快速移动"
+Plugin 'easymotion/vim-easymotion'
 
-	" 在输入()，""等需要配对的符号时，自动帮你补全剩余半个
-	Plugin 'AutoClose'
+" 模版定义工具 自定义html模版
+Plugin 'SirVer/ultisnips'
 
-	" html／xml tags关闭
-	Plugin 'alvan/vim-closetag'
+" 在输入()，""等需要配对的符号时，自动帮你补全剩余半个
+Plugin 'AutoClose'
 
-	" vim自动补全
-	Plugin 'Valloric/YouCompleteMe'
+" html／xml tags关闭
+Plugin 'alvan/vim-closetag'
 
-	" 在VIM的编辑窗口树状显示文件目录
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'Xuyuanp/nerdtree-git-plugin'
+" vim自动补全
+Plugin 'Valloric/YouCompleteMe'
 
-	" 注释插件
-	Plugin 'scrooloose/nerdcommenter'
+" 在VIM的编辑窗口树状显示文件目录
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
-  " gtag
-  " Plugin 'gtags.vim'
+" 注释插件
+Plugin 'scrooloose/nerdcommenter'
 
-  " taglist 依赖于ctag
-  " Plugin 'taglist.vim'
+" gtag
+" Plugin 'gtags.vim'
 
-  " vim angular 定位函数
-  " Plugin 'vim-angular'
+" taglist 依赖于ctag
+" Plugin 'taglist.vim'
 
-  " vimwiki
-  Plugin 'vimwiki/vimwiki'
+" vim angular 定位函数
+" Plugin 'vim-angular'
 
-  " ascll 图
-  Plugin 'vim-scripts/DrawIt'
+" vimwiki
+Plugin 'vimwiki/vimwiki'
 
-  " 异步任务
-  Plugin 'skywind3000/asyncrun.vim'
+" ascll 图
+Plugin 'vim-scripts/DrawIt'
 
-	" All of your Plugins must be added before the following line
-	call vundle#end()            " required
-	filetype plugin indent on    " required
+" 异步任务
+Plugin 'skywind3000/asyncrun.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " filenames like *.xml, *.html, *.xhtml, ...
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.vue"
@@ -94,11 +94,11 @@ set cursorcolumn " 列高亮
 
 set softtabstop=2 " shifiwidth和tabstop混合，设置时，tab以该值为准
 
-set shiftwidth=2 " 统一缩进为2  影响缩进空格数 
+set shiftwidth=2 " 统一缩进为2  影响缩进空格数
 
 set hlsearch " 搜索逐字符高亮
 
-set incsearch " 增量搜索，边搜边查询 
+set incsearch " 增量搜索，边搜边查询
 
 set ignorecase " 忽略大小写
 
@@ -132,7 +132,7 @@ set foldmethod=marker " indent marker 常用
 set whichwrap="h,l"
 
 " 缓冲区通配符配置
-set wildmenu wildmode=full 
+set wildmenu wildmode=full
 set wildchar=<Tab> wildcharm=<C-Z>
 
 " 插入模式下移动
@@ -163,22 +163,10 @@ let mapleader=";"
 " 让配置变更立即生效
 " autocmd BufWritePost $MYVIMRC scource $MYVIMRC
 
-" Normally we use vim-extensions. If you want true vi-compatibility
-" remove change the following statements
-""set nocompatible	" Use Vim defaults instead of 100% vi compatibility
-""set backspace=2		" more powerful backspacing
-""autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-""autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-
-" Don't write backup file if vim is being called by "crontab -e"
-""au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
-" Don't write backup file if vim is being called by "chpass"
-""au BufWrite /private/etc/pw.* set nowritebackup nobackup
-
 syntax enable
 let g:solarized_termcolors=256
 let g:solarized_visibility="normal"
-set background=dark  
+set background=dark
 colorscheme solarized
 
 " scrooloose/nerdcommenter配置
@@ -208,10 +196,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " easymotion 配置
 let g:EasyMotion_do_mapping = 0 " Disable default mapping
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+map <Leader>/ <Plug>(easymotion-sn)
+omap <Leader>/ <Plug>(easymotion-tn)
+map <c-n> <Plug>(easymotion-next)
+map <c-p> <Plug>(easymotion-prev)
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
@@ -219,3 +207,6 @@ map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_use_smartsign_us = 1 " US layout With this option set, v will match both v and V, but V will match V only. Default: 0.
 nmap s <Plug>(easymotion-s2)
 nmap t <Plug>(easymotion-t2)
+
+" 显示末尾空格和删除
+match ErrorMsg '\s\+$'
