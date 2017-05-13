@@ -23,7 +23,7 @@ Plugin 'vim-scripts/matchit.zip'
 Plugin 'easymotion/vim-easymotion'
 
 " 模版定义工具 自定义html模版
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 
 " 在输入()，""等需要配对的符号时，自动帮你补全剩余半个
 Plugin 'AutoClose'
@@ -145,11 +145,19 @@ set wildchar=<Tab> wildcharm=<C-Z>
 " nmap <c-j> ddp
 " nmap <c-k> dd<up><up>p
 
+" vim 和 剪贴板复制问题
+" vmap +y :w !pbcopy<CR><CR>
+" nmap +p :r !pbpaste<CR><CR>
+
 " 管理端html 一键配置
 imap `d <esc>2dhi<div class=""<esc>i
 imap `a <esc>2dhi<a href="#"><esc>F"la
 imap `i <esc>2dhi<input type="text" data-ng-model="" placeholder=""/><esc>2F=la
 imap `b <esc>2dhi<button title="" placeholder=""><esc>f=la
+
+" 设置分屏尺寸
+cmap r+ resize +20
+cmap v+ vertical resize +20
 
 " 全选
 " map <c-a> <esc>ggVG$
