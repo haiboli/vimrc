@@ -59,6 +59,9 @@ Plugin 'vim-scripts/DrawIt'
 " 异步任务
 Plugin 'skywind3000/asyncrun.vim'
 
+" 全局搜索 先 brew install ack 安装ack
+Plugin 'mileszs/ack.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -155,10 +158,6 @@ imap `a <esc>2dhi<a href="#"><esc>F"la
 imap `i <esc>2dhi<input type="text" data-ng-model="" placeholder=""/><esc>2F=la
 imap `b <esc>2dhi<button title="" placeholder=""><esc>f=la
 
-" 设置分屏尺寸
-cmap r+ resize +20
-cmap v+ vertical resize +20
-
 " 全选
 " map <c-a> <esc>ggVG$
 
@@ -167,6 +166,11 @@ nnoremap Q <nop>
 
 " for ycm
 let mapleader=";"
+" 设置分屏尺寸
+map <Leader>+ :resize +20<CR>
+map + :vertical resize +20<CR>
+map <Leader>- :resize +20<CR>
+map - :vertical resize +20<CR>
 
 " 让配置变更立即生效
 " autocmd BufWritePost $MYVIMRC scource $MYVIMRC
@@ -218,3 +222,6 @@ nmap t <Plug>(easymotion-t2)
 
 " 显示末尾空格和删除
 match ErrorMsg '\s\+$'
+
+" ack 快捷键
+map <Leader>g :Ack -i 
