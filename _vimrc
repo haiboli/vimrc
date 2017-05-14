@@ -10,13 +10,15 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" vue 高亮
+"  高亮vue  jade
 Plugin 'posva/vim-vue'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'wavded/vim-stylus'
 
 " 显示行末的空格；
 "	Plugin 'ShowTrailingWhitespace'
 
-" html标签跳转
+" %增强标签跳转
 Plugin 'vim-scripts/matchit.zip'
 
 " 快速移动"
@@ -27,7 +29,6 @@ Plugin 'easymotion/vim-easymotion'
 
 " 在输入()，""等需要配对的符号时，自动帮你补全剩余半个
 Plugin 'AutoClose'
-
 " html／xml tags关闭
 Plugin 'alvan/vim-closetag'
 
@@ -59,22 +60,41 @@ Plugin 'vim-scripts/DrawIt'
 " 异步任务
 Plugin 'skywind3000/asyncrun.vim'
 
-" 全局搜索 先 brew install ack 安装ack
-Plugin 'mileszs/ack.vim'
+" 全局搜索 先 brew install ack 安装ack, ag和ack一样，不过ag更快
+" Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
+
+" 状态栏增强
+" "Plugin 'vim-airline/vim-airline'
+" "Plugin 'vim-airline/vim-airline-themes'
+
+" 文件查找
+Plugin 'kien/ctrlp.vim'
+
+" markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " filenames like *.xml, *.html, *.xhtml, ...
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.vue"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.vue,*.jade"
 
+let mapleader=';'
 " nerdtree config
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-map ;2 :NERDTreeToggle<CR>
+nmap <Leader>2 :NERDTreeToggle<CR>
 " 关闭vim时，如果打开的文件除了NERDTree没有其他文件时，它自动关闭，减少多次按:q!
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+" 切换窗口
+nmap ss <c-w>w
+nmap sh <c-w>h
+nmap sl <c-w>l
+nmap sj <c-w>j
+nmap sk <c-w>k
 
 set modelines=0		" CVE-2007-2438
 set showmatch " 高亮显示对应的括号
@@ -88,6 +108,7 @@ set expandtab " 输入tab自动转成space 对应的space数量由tabstop=x 决�
 set tabstop=2 " 设置tab键宽
 syntax on " 自动语法高亮
 set nocompatible
+set hidden
 filetype plugin on
 
 set cursorline " 行高亮
@@ -164,8 +185,6 @@ imap `b <esc>2dhi<button title="" placeholder=""><esc>f=la
 " 不要进入vim的Ex模式
 nnoremap Q <nop>
 
-" for ycm
-let mapleader=";"
 " 设置分屏尺寸
 map <Leader>+ :resize +20<CR>
 map + :vertical resize +20<CR>
@@ -218,10 +237,21 @@ map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_use_smartsign_us = 1 " US layout With this option set, v will match both v and V, but V will match V only. Default: 0.
 nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
+" nmap t <Plug>(easymotion-t2)
 
 " 显示末尾空格和删除
 match ErrorMsg '\s\+$'
 
-" ack 快捷键
-map <Leader>g :Ack -i 
+" airline"
+" "let g:airline_powerline_fonts = 1
+
+" markdown
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_json_frontmatter = 1
+
+" ag， ag和ack操作一样，ag速度更快
+" map <Leader>g :copen<CR><Esc>:AsyncRun Ag -i
+map <Leader>g :AsyncRun Ag -i 
+map <Leader>5 :call asyncrun#quickfix_toggle(8)<CR>
