@@ -1,1 +1,1 @@
-.vimrc
+/Users/lihaibo/.vimrc
