@@ -31,6 +31,8 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'AutoClose'
 " html／xml tags关闭
 Plugin 'alvan/vim-closetag'
+" surround配对外挂, 轻松在word两边添加() {} [] <> '' "
+Plugin 'tpope/vim-surround'
 
 " vim自动补全
 Plugin 'Valloric/YouCompleteMe'
@@ -72,8 +74,20 @@ Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
 
 " markdown
-Plugin 'godlygeek/tabular'
+Plugin 'godlygeek/tabular' " 文本过滤和更优雅的对齐
 Plugin 'plasticboy/vim-markdown'
+
+" 批量编辑
+Plugin 'terryma/vim-multiple-cursors'
+
+" 代码格式化
+Plugin 'Chiel92/vim-autoformat'
+
+" 批处理
+Plugin 'tpope/vim-repeat'
+
+" 文本浏览器w3m
+" Plugin 'yuratomo/w3m.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -89,12 +103,6 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 nmap <Leader>2 :NERDTreeToggle<CR>
 " 关闭vim时，如果打开的文件除了NERDTree没有其他文件时，它自动关闭，减少多次按:q!
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-" 切换窗口
-nmap ss <c-w>w
-nmap sh <c-w>h
-nmap sl <c-w>l
-nmap sj <c-w>j
-nmap sk <c-w>k
 
 set modelines=0		" CVE-2007-2438
 set showmatch " 高亮显示对应的括号
@@ -152,8 +160,10 @@ set selectmode=mouse,key
 " 设置折叠
 set foldmethod=marker " indent marker 常用
 
+" 开启自动断行
+" set wrap
 " 光标到行首和行尾时可以继续移动
-set whichwrap="h,l"
+" set whichwrap="h,l"
 
 " 缓冲区通配符配置
 set wildmenu wildmode=full
@@ -188,11 +198,18 @@ nnoremap Q <nop>
 " 设置分屏尺寸
 map <Leader>+ :resize +20<CR>
 map + :vertical resize +20<CR>
-map <Leader>- :resize +20<CR>
-map - :vertical resize +20<CR>
+map <Leader>- :resize -20<CR>
+map - :vertical resize -20<CR>
 
 " 让配置变更立即生效
 " autocmd BufWritePost $MYVIMRC scource $MYVIMRC
+
+" tab buffer切换
+map gt :tabn<CR>
+map gT :tabp<CR>
+map s :bp<CR>
+map S :bn<CR>
+
 
 syntax enable
 let g:solarized_termcolors=256
@@ -229,14 +246,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:EasyMotion_do_mapping = 0 " Disable default mapping
 map <Leader>/ <Plug>(easymotion-sn)
 omap <Leader>/ <Plug>(easymotion-tn)
-map <c-n> <Plug>(easymotion-next)
-map <c-p> <Plug>(easymotion-prev)
+map <Leader>n <Plug>(easymotion-next)
+map <Leader>p <Plug>(easymotion-prev)
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_use_smartsign_us = 1 " US layout With this option set, v will match both v and V, but V will match V only. Default: 0.
-nmap s <Plug>(easymotion-s2)
+" nmap s <Plug>(easymotion-s2)
 " nmap t <Plug>(easymotion-t2)
 
 " 显示末尾空格和删除
@@ -255,3 +272,34 @@ let g:vim_markdown_json_frontmatter = 1
 " map <Leader>g :copen<CR><Esc>:AsyncRun Ag -i
 map <Leader>g :AsyncRun Ag -i 
 map <Leader>5 :call asyncrun#quickfix_toggle(8)<CR>
+
+" ctrlp
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|node_modules)$',
+  \ 'file': '\v\.(exe|so|dll|png|mp*|jpeg|jpg)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+let g:ctrlp_working_path_mode = 'ra'
+
+" 便于更新vimrc
+nmap ,s :source /Users/lihaibo/.vimrc<CR>
+nmap ,v :e /Users/lihaibo/.vimrc<CR>
+
+" vim-multiple-cursors
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-m>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_start_key=";6"
+
+" autoformat
+" let g:formatdef_my_html="js-beautify" " npm install js-beautify 配置参考.jsbeautifyrc
+" let g:formatters_html=["my_html"]
+" au BufWrite *.html :Autoformat " 保存时自动格式化html代码
+
+" w3m
+let g:w3m#disable_default_keymap = 1
+" git annotate
+map ga :AsyncRun git annotate 
+
