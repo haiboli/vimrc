@@ -33,6 +33,9 @@ brew uninstall node
 brew install node
 npm install -g jsbeautify
 
+#percol
+brew percol
+
 # 同步配置
 #cp ./.jsbeautifyrc $User
 #cp ./.git-completion.bash $User
