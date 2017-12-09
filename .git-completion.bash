@@ -1,1 +1,0 @@
-/Users/lihaibo/.git-completion.bash
