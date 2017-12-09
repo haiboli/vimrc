@@ -18,7 +18,8 @@ chsh -s /bin/zsh #切换shell
 brew install autojump
 # install tmux
 brew install tmux
-#brew install reattach-to-user-namespace
+#Accessing the macOS clipboard from within tmux sessions
+brew install reattach-to-user-namespace
 #cp ./.tmux.conf $User
 # install iterm2
 wget https://iterm2.com/downloads/stable/latest
