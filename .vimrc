@@ -14,6 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'posva/vim-vue'
 Plugin 'digitaltoad/vim-pug'
 Plugin 'wavded/vim-stylus'
+Plugin 'vim-scripts/nginx.vim'
 
 " 显示行末的空格；
 "	Plugin 'ShowTrailingWhitespace'
@@ -275,7 +276,7 @@ map <Leader>5 :call asyncrun#quickfix_toggle(8)<CR>
 
 " ctrlp
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|node_modules)$',
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|node_modules|dist)$',
   \ 'file': '\v\.(exe|so|dll|png|mp*|jpeg|jpg)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -302,4 +303,5 @@ let g:multi_cursor_start_key=";6"
 let g:w3m#disable_default_keymap = 1
 " git annotate
 map ga :AsyncRun git annotate 
+map ;$ :%s/\s\+$//<CR>
 

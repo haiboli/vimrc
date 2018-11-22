@@ -91,3 +91,5 @@ vimwiki/
 yarn.lock
 
 *.swp
+*.*
+wget-log

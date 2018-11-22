@@ -86,8 +86,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias cnpm='npm install --registry=https://registry.npm.taobao.org'
+alias sshali='ssh root@47.93.0.128'
 alias vi='vim'
 alias vin='vim --noplugin'
+alias hugoto='hugo --theme=hugo-theme-air --baseUrl="blog/"'
 export TERM=xterm-256color
 export PATH="$HOME/.yarn/bin:$PATH"
 # [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
