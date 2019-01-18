@@ -1,5 +1,96 @@
 
 filetype off                  " required
+" vim-plug 插件管理
+call plug#begin('~/.vim/plugged')
+" 补全工具
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" git监控
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" 在VIM的编辑窗口树状显示文件目录
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+"  高亮vue  jade
+Plug 'posva/vim-vue'
+Plug 'digitaltoad/vim-pug'
+Plug 'wavded/vim-stylus'
+Plug 'vim-scripts/nginx.vim'
+
+" 显示行末的空格；
+"	Plug 'ShowTrailingWhitespace'
+
+" %增强标签跳转
+Plug 'vim-scripts/matchit.zip'
+
+" 快速移动"
+Plug 'easymotion/vim-easymotion'
+
+
+" 模版定义工具 自定义html模版
+" Plug 'SirVer/ultisnips'
+
+" 在输入()，""等需要配对的符号时，自动帮你补全剩余半个
+Plug 'AutoClose'
+" html／xml tags关闭
+Plug 'alvan/vim-closetag'
+" surround配对外挂, 轻松在word两边添加() {} [] <> '' "
+Plug 'tpope/vim-surround'
+
+" vim自动补全
+" Plug 'Valloric/YouCompleteMe'
+
+" 注释插件
+Plug 'scrooloose/nerdcommenter'
+
+" gtag
+" Plug 'gtags.vim'
+
+" taglist 依赖于ctag
+" Plug 'taglist.vim'
+
+" vim angular 定位函数
+" Plug 'vim-angular'
+
+" vimwiki
+Plug 'vimwiki/vimwiki'
+
+" ascll 图
+Plug 'vim-scripts/DrawIt'
+
+" 异步任务
+Plug 'skywind3000/asyncrun.vim'
+
+" 全局搜索 先 brew install ack 安装ack, ag和ack一样，不过ag更快
+" Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
+
+" 状态栏增强
+" "Plug 'vim-airline/vim-airline'
+" "Plug 'vim-airline/vim-airline-themes'
+
+" 文件查找
+Plug 'kien/ctrlp.vim'
+
+" markdown
+Plug 'godlygeek/tabular' " 文本过滤和更优雅的对齐
+Plug 'plasticboy/vim-markdown'
+
+" 批量编辑
+Plug 'terryma/vim-multiple-cursors'
+
+" 代码格式化
+Plug 'Chiel92/vim-autoformat'
+
+" 批处理
+Plug 'tpope/vim-repeat'
+
+" vim timing
+Plug 'vim-scripts/timing.vim'
+
+" 文本浏览器w3m
+" Plug 'yuratomo/w3m.vim'
+
+call plug#end()
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -36,11 +127,8 @@ Plugin 'alvan/vim-closetag'
 Plugin 'tpope/vim-surround'
 
 " vim自动补全
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
-" 在VIM的编辑窗口树状显示文件目录
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " 注释插件
 Plugin 'scrooloose/nerdcommenter'
@@ -86,6 +174,9 @@ Plugin 'Chiel92/vim-autoformat'
 
 " 批处理
 Plugin 'tpope/vim-repeat'
+
+" vim timing
+Plugin 'vim-scripts/timing.vim'
 
 " 文本浏览器w3m
 " Plugin 'yuratomo/w3m.vim'
