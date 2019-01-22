@@ -30,7 +30,7 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'SirVer/ultisnips'
 
 " 在输入()，""等需要配对的符号时，自动帮你补全剩余半个
-Plug 'AutoClose'
+Plug 'townk/vim-autoclose'
 " html／xml tags关闭
 Plug 'alvan/vim-closetag'
 " surround配对外挂, 轻松在word两边添加() {} [] <> '' "
@@ -91,98 +91,6 @@ Plug 'vim-scripts/timing.vim'
 " Plug 'yuratomo/w3m.vim'
 
 call plug#end()
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-"  高亮vue  jade
-Plugin 'posva/vim-vue'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'wavded/vim-stylus'
-Plugin 'vim-scripts/nginx.vim'
-
-" 显示行末的空格；
-"	Plugin 'ShowTrailingWhitespace'
-
-" %增强标签跳转
-Plugin 'vim-scripts/matchit.zip'
-
-" 快速移动"
-Plugin 'easymotion/vim-easymotion'
-
-" 模版定义工具 自定义html模版
-" Plugin 'SirVer/ultisnips'
-
-" 在输入()，""等需要配对的符号时，自动帮你补全剩余半个
-Plugin 'AutoClose'
-" html／xml tags关闭
-Plugin 'alvan/vim-closetag'
-" surround配对外挂, 轻松在word两边添加() {} [] <> '' "
-Plugin 'tpope/vim-surround'
-
-" vim自动补全
-" Plugin 'Valloric/YouCompleteMe'
-
-
-" 注释插件
-Plugin 'scrooloose/nerdcommenter'
-
-" gtag
-" Plugin 'gtags.vim'
-
-" taglist 依赖于ctag
-" Plugin 'taglist.vim'
-
-" vim angular 定位函数
-" Plugin 'vim-angular'
-
-" vimwiki
-Plugin 'vimwiki/vimwiki'
-
-" ascll 图
-Plugin 'vim-scripts/DrawIt'
-
-" 异步任务
-Plugin 'skywind3000/asyncrun.vim'
-
-" 全局搜索 先 brew install ack 安装ack, ag和ack一样，不过ag更快
-" Plugin 'mileszs/ack.vim'
-Plugin 'rking/ag.vim'
-
-" 状态栏增强
-" "Plugin 'vim-airline/vim-airline'
-" "Plugin 'vim-airline/vim-airline-themes'
-
-" 文件查找
-Plugin 'kien/ctrlp.vim'
-
-" markdown
-Plugin 'godlygeek/tabular' " 文本过滤和更优雅的对齐
-Plugin 'plasticboy/vim-markdown'
-
-" 批量编辑
-Plugin 'terryma/vim-multiple-cursors'
-
-" 代码格式化
-Plugin 'Chiel92/vim-autoformat'
-
-" 批处理
-Plugin 'tpope/vim-repeat'
-
-" vim timing
-Plugin 'vim-scripts/timing.vim'
-
-" 文本浏览器w3m
-" Plugin 'yuratomo/w3m.vim'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 
 " filenames like *.xml, *.html, *.xhtml, ...
@@ -395,4 +303,3 @@ let g:w3m#disable_default_keymap = 1
 " git annotate
 map ga :AsyncRun git annotate 
 map ;$ :%s/\s\+$//<CR>
-
