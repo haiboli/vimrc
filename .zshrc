@@ -53,6 +53,7 @@ ZSH_THEME="bureau"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git web-search autojump z)
+#plugins=(git z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,12 +91,16 @@ alias sshali='ssh root@47.93.0.128'
 alias vi='vim'
 alias vin='vim --noplugin'
 alias hugoto='hugo --theme=hugo-theme-air --baseUrl="blog/"'
-alias feall='echo 李汶鸿，肖梦刚，石增振， 何永棒，王兵，连冰华，朱贝，刘梦月，陈玲，葛圆圆，李海波，姚毅，吕慧珍，刘申| pbcopy'
+alias feall='cat /.normal/fe_name | pbcopy | cat ./.normal/fe_name '
+alias dire='cat ./.normal/directive'
 alias man="tldr"
 alias glances="top"
+alias updatedb="sudo /usr/libexec/locate.updatedb"
 export TERM=xterm-256color
-export PATH="$HOME/.yarn/bin:$PATH"
+# export PATH="$HOME/.yarn/bin:$PATH"
 # [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
-export NVM_DIR="/Users/lihaibo/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#export NVM_DIR="/Users/lihaibo/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+alias git='LANG=en_GB git'
+DISABLE_AUTO_UPDATE=true

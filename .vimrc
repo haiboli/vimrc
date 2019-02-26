@@ -3,7 +3,7 @@ filetype off                  " required
 " vim-plug 插件管理
 call plug#begin('~/.vim/plugged')
 " 补全工具
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " git监控
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 " 在VIM的编辑窗口树状显示文件目录
@@ -38,6 +38,7 @@ Plug 'tpope/vim-surround'
 
 " vim自动补全
 " Plug 'Valloric/YouCompleteMe'
+"Plug 'marijnh/tern_for_vim'
 
 " 注释插件
 Plug 'scrooloose/nerdcommenter'
@@ -65,8 +66,8 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'rking/ag.vim'
 
 " 状态栏增强
-" "Plug 'vim-airline/vim-airline'
-" "Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 
 " 文件查找
 Plug 'kien/ctrlp.vim'
@@ -89,6 +90,9 @@ Plug 'vim-scripts/timing.vim'
 
 " 文本浏览器w3m
 " Plug 'yuratomo/w3m.vim'
+
+" 代码阅读
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 filetype plugin indent on    " required
@@ -303,3 +307,6 @@ let g:w3m#disable_default_keymap = 1
 " git annotate
 map ga :AsyncRun git annotate 
 map ;$ :%s/\s\+$//<CR>
+nmap <F3> :TagbarToggle<CR>
+nmap <Leader>3 :TagbarToggle<CR>
+set timeoutlen=1000 ttimeoutlen=0
