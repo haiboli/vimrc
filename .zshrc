@@ -1,8 +1,20 @@
+#
+# User configuration sourced by interactive shells
+#
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+# Define zim location
+export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+export ROOT=${ZDOTDIR:-${HOME}}
+
+# Start zim
+[[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
 # If you come from bash you might have to change your $PATH.
+
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/lihaibo/.oh-my-zsh
+# export ZSH=/Users/lihaibo/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -52,10 +64,10 @@ ZSH_THEME="bureau"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git web-search autojump z)
+#plugins=(git web-search autojump z)
 #plugins=(git z)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -85,22 +97,18 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias cnpm='npm install --registry=https://registry.npm.taobao.org'
-alias sshali='ssh root@47.93.0.128'
-alias vi='vim'
-alias vin='vim --noplugin'
-alias hugoto='hugo --theme=hugo-theme-air --baseUrl="blog/"'
-alias feall='cat /.normal/fe_name | pbcopy | cat ./.normal/fe_name '
-alias dire='cat ./.normal/directive'
-alias man="tldr"
-alias glances="top"
-alias updatedb="sudo /usr/libexec/locate.updatedb"
-export TERM=xterm-256color
-# export PATH="$HOME/.yarn/bin:$PATH"
-# [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-
-#export NVM_DIR="/Users/lihaibo/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-alias git='LANG=en_GB git'
 DISABLE_AUTO_UPDATE=true
+
+#zim配置
+eval "$(fasd --init auto)"
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+
+#alias.zsh
+source ${ROOT}/.alias.zsh

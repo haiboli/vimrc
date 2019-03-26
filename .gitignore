@@ -6,7 +6,6 @@
 .WhistleAppData/
 ._Doc/
 ._macrc/
-._vimrc/
 .babel.json
 .bash_history
 .bash_sessions/
@@ -43,12 +42,11 @@
 .v8flags.5.5.372.43.f6c077db8a651291b5437f578de033e0.json
 .v8flags.5.5.372.43.lihaibo.json
 .v8flags.5.8.283.41.f6c077db8a651291b5437f578de033e0.json
-.vim/
 .viminfk.tmp
 .viminfl.tmp
 .viminfm.tmp
 .viminfn.tmp
-.viminfo
+/viminfo
 .viminfo.tmp
 .viminfp.tmp
 .viminfq.tmp
@@ -86,10 +84,11 @@ package-lock.json
 per.js
 test.html
 test.js
-vimrc/
 vimwiki/
 yarn.lock
 
 *.swp
 *.*
 wget-log
+var
+vimrc/

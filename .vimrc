@@ -27,18 +27,20 @@ Plug 'easymotion/vim-easymotion'
 
 
 " 模版定义工具 自定义html模版
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " 在输入()，""等需要配对的符号时，自动帮你补全剩余半个
-Plug 'townk/vim-autoclose'
+" Plug 'townk/vim-autoclose'
+Plug 'Raimondi/delimitMate' " 同autoclose
 " html／xml tags关闭
 Plug 'alvan/vim-closetag'
 " surround配对外挂, 轻松在word两边添加() {} [] <> '' "
 Plug 'tpope/vim-surround'
 
 " vim自动补全
-" Plug 'Valloric/YouCompleteMe'
-"Plug 'marijnh/tern_for_vim'
+Plug 'marijnh/tern_for_vim'
+Plug 'Valloric/YouCompleteMe',{'do':'python3 install.py --ts-completer'}
 
 " 注释插件
 Plug 'scrooloose/nerdcommenter'
@@ -78,6 +80,7 @@ Plug 'plasticboy/vim-markdown'
 
 " 批量编辑
 Plug 'terryma/vim-multiple-cursors'
+Plug 'dyng/ctrlsf.vim'
 
 " 代码格式化
 Plug 'Chiel92/vim-autoformat'
@@ -95,6 +98,13 @@ Plug 'vim-scripts/timing.vim'
 Plug 'majutsushi/tagbar'
 
 call plug#end()
+
+" vundle
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+" Plugin 'VundleVim/Vundle.vim'
+" call vundle#end()            " required
+
 filetype plugin indent on    " required
 
 " filenames like *.xml, *.html, *.xhtml, ...
@@ -241,10 +251,6 @@ let g:vimwiki_list = [{'path': '/Users/lihaibo/vimwiki',
 \ 'path_html': 'Users/lihaibo/vimwiki/html/',
 \ 'html_header': 'Users/lihaibo/vimwiki/template/header.tpl',}]
 
-" 解决YCM和ultisnips的冲突
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " easymotion 配置
 let g:EasyMotion_do_mapping = 0 " Disable default mapping
@@ -310,3 +316,38 @@ map ;$ :%s/\s\+$//<CR>
 nmap <F3> :TagbarToggle<CR>
 nmap <Leader>3 :TagbarToggle<CR>
 set timeoutlen=1000 ttimeoutlen=0
+
+" ycm配置
+" let g:AutoClosePumvisible = {"ENTER": "", "ESC": ""} " AutoClose 和 ycml的冲突
+"在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+"在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
+
+" 解决YCM和ultisnips的冲突
+"当补全插入时，是否自动关闭展示的预览窗口，默认 0
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+" let g:SuperTabDefaultCompletionType = '<C-j>'
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsListSnippets="<c-l>"
+" let g:UltiSnipsJumpForwardTrigger="<C-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+let g:python_host_prog = "/usr/bin/python2"
+let g:python3_host_prog = "/usr/bin/python3"
+
+" ctrlsf
+" let g:ctrlsf_search_mode = 'async'
+
+" cursor
+" let g:multi_cursor_use_default_mapping=0
+" let g:multi_cursor_next_key='<c-j>'
+" let g:multi_cursor_prev_key='<C-k>'
+" let g:multi_cursor_skip_key='<C-x>'
+" let g:multi_cursor_quit_key='<Esc>'
+"
