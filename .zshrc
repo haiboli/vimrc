@@ -101,10 +101,10 @@ DISABLE_AUTO_UPDATE=true
 
 #zim配置
 eval "$(fasd --init auto)"
-alias a='fasd -a'        # any
-alias s='fasd -si'       # show / search / select
-alias d='fasd -d'        # directory
-alias f='fasd -f'        # file
+alias fa='fasd -a'        # any
+alias fs='fasd -si'       # show / search / select
+# alias fd='fasd -d'        # directory
+alias ff='fasd -f'        # file
 alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
@@ -112,3 +112,11 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 
 #alias.zsh
 source ${ROOT}/.alias.zsh
+#sed: RE error: illegal byte sequence
+export LC_CTYPE=C
+export LANG=C
+#开启vim模式
+# bindkey -v
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

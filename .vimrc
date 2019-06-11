@@ -1,4 +1,3 @@
-
 filetype off                  " required
 " vim-plug 插件管理
 call plug#begin('~/.vim/plugged')
@@ -9,6 +8,11 @@ call plug#begin('~/.vim/plugged')
 " 在VIM的编辑窗口树状显示文件目录
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" tab 管理
+Plug 'kien/tabman.vim'
+
+"git管理
+Plug 'tpope/vim-fugitive'
 
 "  高亮vue  jade
 Plug 'posva/vim-vue'
@@ -63,20 +67,24 @@ Plug 'vim-scripts/DrawIt'
 " 异步任务
 Plug 'skywind3000/asyncrun.vim'
 
-" 全局搜索 先 brew install ack 安装ack, ag和ack一样，不过ag更快
+" 全局搜索 先 brew install ack 安装ack, ag和ack 一样， rg > ag > ack
 " Plug 'mileszs/ack.vim'
 Plug 'rking/ag.vim'
+""""""Plug 'mhinz/vim-grepper' 待
+" rg
+Plug 'jremmen/vim-ripgrep'
 
 " 状态栏增强
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 
 " 文件查找
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
+Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
 
 " markdown
-Plug 'godlygeek/tabular' " 文本过滤和更优雅的对齐
-Plug 'plasticboy/vim-markdown'
+" Plug 'godlygeek/tabular' " 文本过滤和更优雅的对齐
+" Plug 'plasticboy/vim-markdown'
 
 " 批量编辑
 Plug 'terryma/vim-multiple-cursors'
@@ -96,6 +104,10 @@ Plug 'vim-scripts/timing.vim'
 
 " 代码阅读
 Plug 'majutsushi/tagbar'
+
+" fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
+Plug 'junegunn/fzf.vim' 
 
 call plug#end()
 
@@ -198,10 +210,10 @@ set wildchar=<Tab> wildcharm=<C-Z>
 " nmap +p :r !pbpaste<CR><CR>
 
 " 管理端html 一键配置
-imap `d <esc>2dhi<div class=""<esc>i
-imap `a <esc>2dhi<a href="#"><esc>F"la
-imap `i <esc>2dhi<input type="text" data-ng-model="" placeholder=""/><esc>2F=la
-imap `b <esc>2dhi<button title="" placeholder=""><esc>f=la
+" imap `d <esc>2dhi<div class=""<esc>i
+" imap `a <esc>2dhi<a href="#"><esc>F"la
+" imap `i <esc>2dhi<input type="text" data-ng-model="" placeholder=""/><esc>2F=la
+" imap `b <esc>2dhi<button title="" placeholder=""><esc>f=la
 
 " 全选
 " map <c-a> <esc>ggVG$
@@ -280,7 +292,9 @@ let g:vim_markdown_json_frontmatter = 1
 
 " ag， ag和ack操作一样，ag速度更快
 " map <Leader>g :copen<CR><Esc>:AsyncRun Ag -i
-map <Leader>g :AsyncRun Ag -i 
+" map <Leader>g :AsyncRun Ag -i
+" map <Leader>g :Rg
+map <Space>g :Rg 
 map <Leader>5 :call asyncrun#quickfix_toggle(8)<CR>
 
 " ctrlp
@@ -351,3 +365,37 @@ let g:python3_host_prog = "/usr/bin/python3"
 " let g:multi_cursor_skip_key='<C-x>'
 " let g:multi_cursor_quit_key='<Esc>'
 "
+"
+" vue 快捷键
+map <SPACE>m /methods<CR>
+map <SPACE>w /watch<CR>
+map <SPACE>d /document<CR>
+map <SPACE>a /addEventListener<CR>
+map <SPACE>h /mounted<CR>
+
+" leaderf
+" nmap <C-p> :Leaderf file --reverse<CR>
+nmap <Leader>f :Leaderf file --reverse<CR>
+nmap <Leader>g :Leaderf rg --reverse -e 
+nmap <Leader>t :Leaderf rg --reverse -e <C-r><C-w><CR>
+nmap g* :AsyncRun Ag -i <C-r><C-w> -f %<CR>
+noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
+" 命令行模式增强，ctrl - a到行首， -e 到行尾
+" cnoremap <C-j> <t_kd>
+" cnoremap <C-k> <t_ku>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+" Keep search pattern at the center of the screen.
+" nnoremap <silent> n nzz
+" nnoremap <silent> N Nzz
+" nnoremap <silent> * *zz
+" nnoremap <silent> # #zz
+" nnoremap <silent> g* g*zz
+
+" tabman
+let g:tabman_toggle = 'tl'
+let g:tabman_focus  = 'tf'
+
+" nerdtree
+let NERDTreeIgnore=['node_modules','dist', '\.sh', '\.json', '\.md', '\.yaml']
+noremap <leader>1 <Esc>:syntax sync fromstart<CR>
