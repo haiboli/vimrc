@@ -85,6 +85,7 @@ Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
 " markdown
 " Plug 'godlygeek/tabular' " 文本过滤和更优雅的对齐
 " Plug 'plasticboy/vim-markdown'
+Plug 'JamshedVesuna/vim-markdown-preview'
 
 " 批量编辑
 Plug 'terryma/vim-multiple-cursors'
@@ -108,6 +109,15 @@ Plug 'majutsushi/tagbar'
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
 Plug 'junegunn/fzf.vim' 
+
+" yankring
+Plug 'vim-scripts/YankRing.vim'
+
+" html编码
+Plug 'mattn/emmet-vim'
+
+" minimap
+Plug 'severin-lemaignan/vim-minimap'
 
 call plug#end()
 
@@ -266,10 +276,10 @@ let g:vimwiki_list = [{'path': '/Users/lihaibo/vimwiki',
 
 " easymotion 配置
 let g:EasyMotion_do_mapping = 0 " Disable default mapping
-map <Leader>/ <Plug>(easymotion-sn)
-omap <Leader>/ <Plug>(easymotion-tn)
-map <Leader>n <Plug>(easymotion-next)
-map <Leader>p <Plug>(easymotion-prev)
+map <Space>/ <Plug>(easymotion-sn)
+omap <Space>/ <Plug>(easymotion-tn)
+map <Space>n <Plug>(easymotion-next)
+map <Space>p <Plug>(easymotion-prev)
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
@@ -369,9 +379,6 @@ let g:python3_host_prog = "/usr/bin/python3"
 " vue 快捷键
 map <SPACE>m /methods<CR>
 map <SPACE>w /watch<CR>
-map <SPACE>d /document<CR>
-map <SPACE>a /addEventListener<CR>
-map <SPACE>h /mounted<CR>
 
 " leaderf
 " nmap <C-p> :Leaderf file --reverse<CR>
@@ -399,3 +406,11 @@ let g:tabman_focus  = 'tf'
 " nerdtree
 let NERDTreeIgnore=['node_modules','dist', '\.sh', '\.json', '\.md', '\.yaml']
 noremap <leader>1 <Esc>:syntax sync fromstart<CR>
+
+" 复制文件姓名
+map yn :let @*=expand('%:t')<CR>
+
+" markdown
+let vim_markdown_preview_github=1
+let vim_markdown_preview_hotkey='<leader>m'
+let vim_markdown_preview_browser='Google Chrome'
