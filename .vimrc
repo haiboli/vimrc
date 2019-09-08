@@ -351,11 +351,12 @@ let g:ycm_complete_in_strings = 1
 
 " 解决YCM和ultisnips的冲突
 "当补全插入时，是否自动关闭展示的预览窗口，默认 0
-" let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 " let g:SuperTabDefaultCompletionType = '<C-j>'
-let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<TAB>"
 let g:UltiSnipsListSnippets="<c-l>"
 " let g:UltiSnipsJumpForwardTrigger="<C-j>"
 " let g:UltiSnipsJumpBackwardTrigger="<C-k>"
@@ -379,6 +380,9 @@ let g:python3_host_prog = "/usr/bin/python3"
 " vue 快捷键
 map <SPACE>m /methods<CR>
 map <SPACE>w /watch<CR>
+" 分屏
+map <SPACE>\ :vsplit<CR>
+map <SPACE>- :split<CR>
 
 " leaderf
 " nmap <C-p> :Leaderf file --reverse<CR>
@@ -414,3 +418,5 @@ map yn :let @*=expand('%:t')<CR>
 let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<leader>m'
 let vim_markdown_preview_browser='Google Chrome'
+
+

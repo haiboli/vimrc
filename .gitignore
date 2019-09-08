@@ -90,7 +90,7 @@ yarn.lock
 *.swp
 *.*
 wget-log
-var
+var/
 vimrc/
 source/
 README.md
