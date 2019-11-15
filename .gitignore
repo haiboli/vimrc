@@ -79,7 +79,6 @@ Pictures/
 Public/
 Var/
 lihaibo/
-node_modules/
 package-lock.json
 per.js
 test.html

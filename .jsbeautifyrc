@@ -1,20 +1,20 @@
 {
-    "indent_size": 2,
-    "html": {
-        "end_with_newline": true,
-        "js": {
-            "indent_size": 2
-        },
-        "css": {
-            "indent_size": 2
-        }
+  "indent_size": 2,
+  "html": {
+    "end_with_newline": true,
+    "js": {
+      "indent_size": 2
     },
     "css": {
-        "indent_size": 2
-    },
-    "js": {
-       "preserve-newlines": true,
-       "keep_array_indentation": true,
-       "break_chained_methods": true
+      "indent_size": 2
     }
+  },
+  "css": {
+    "indent_size": 2
+  },
+  "js": {
+    "preserve-newlines": true,
+    "keep_array_indentation": true,
+    "break_chained_methods": true
+  }
 }

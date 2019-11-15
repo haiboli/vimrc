@@ -107,8 +107,8 @@ Plug 'vim-scripts/timing.vim'
 Plug 'majutsushi/tagbar'
 
 " fzf
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
-Plug 'junegunn/fzf.vim' 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " yankring
 Plug 'vim-scripts/YankRing.vim'
@@ -118,6 +118,9 @@ Plug 'mattn/emmet-vim'
 
 " minimap
 Plug 'severin-lemaignan/vim-minimap'
+
+" terminal
+Plug 'PangPangPangPangPang/vim-terminal'
 
 call plug#end()
 
@@ -250,6 +253,7 @@ map S :bn<CR>
 syntax enable
 let g:solarized_termcolors=256
 let g:solarized_visibility="normal"
+let g:solarized_termtrans=1
 set background=dark
 colorscheme solarized
 
@@ -328,8 +332,12 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_start_key=";6"
 
 " autoformat
-" let g:formatdef_my_html="js-beautify" " npm install js-beautify 配置参考.jsbeautifyrc
-" let g:formatters_html=["my_html"]
+let g:formatdef_htmltidy ='"html-beautify -s 2"'
+let g:formatdef_jsbeautify ='"js-beautify -s 2"'
+let g:formatdef_jsonbeautify ='"underscore print --outfmt json"'
+let g:formatters_html = ['htmltidy']
+let g:formatters_javascript = ['jsbeautify']
+let g:formatters_json = ['jsonbeautify']
 " au BufWrite *.html :Autoformat " 保存时自动格式化html代码
 
 " w3m
@@ -343,12 +351,38 @@ set timeoutlen=1000 ttimeoutlen=0
 
 " ycm配置
 " let g:AutoClosePumvisible = {"ENTER": "", "ESC": ""} " AutoClose 和 ycml的冲突
+" 关闭弹出函数原型预览窗口
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt = 0
+" 关闭静态检查
+let g:ycm_show_diagnostics_ui = 1
 "在注释输入中也能补全
 let g:ycm_complete_in_comments = 1
 "在字符串输入中也能补全
 let g:ycm_complete_in_strings = 1
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
-
+let g:ycm_max_diagnostics_to_display = 10 " 最大显示条数
+let g:ycm_auto_trigger = 1 " 自动触发
+let g:ycm_cache_omnifunc=0 " 禁止缓存匹配项,每次都重新生成匹配项
+let g:ycm_use_ultisnips_completer = 1 " 整合UltiSnips的提示"
+let g:ycm_min_num_of_chars_for_completion = 2 " 开始补全的字符数
+let g:auto_completion_return_key_behavior='smart'
+let g:auto_completion_tab_key_behavior='smart'
+let g:auto_completion_complete_with_key_sequence='jk'
+" 白名单
+" let g:ycm_filetype_whitelist = {
+"       \ "c":1,
+"       \ "cpp":1,
+"       \ "objc":1,
+"       \ "sh":1,
+"       \ "js":1,
+"       \ "ts":1,
+"       \ "vue":1,
+"       \ "css":1,
+"       \ "json":1,
+"       \ "zsh":1,
+"       \ "zimbu":1,
+"       \ }
 " 解决YCM和ultisnips的冲突
 "当补全插入时，是否自动关闭展示的预览窗口，默认 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -412,11 +446,16 @@ let NERDTreeIgnore=['node_modules','dist', '\.sh', '\.json', '\.md', '\.yaml']
 noremap <leader>1 <Esc>:syntax sync fromstart<CR>
 
 " 复制文件姓名
-map yn :let @*=expand('%:t')<CR>
+map <Space>n :let @*=expand('%:t')<CR>
 
 " markdown
 let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<leader>m'
 let vim_markdown_preview_browser='Google Chrome'
+
+" termial
+map <space>j :VSTerminalToggle<cr>
+let g:vs_terminal_custom_height = 14
+let g:vs_terminal_custom_pos = 'bottom'
 
 
